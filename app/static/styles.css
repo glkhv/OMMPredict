@@ -1,0 +1,164 @@
+.content {
+    padding: 0 5rem;
+    margin: 0 auto;
+    max-width: 1800px;
+}
+
+.subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+}
+
+nav .nav-wrapper {
+    padding: 0 1.5rem;
+}
+
+.nav-wrapper img {
+    vertical-align: middle !important;
+}
+
+.z-depth-3 {
+    box-shadow: 0 8px 17px 2px rgb(0 0 0 / 5%), 0 3px 14px 2px rgb(0 0 0 / 0%), 0 5px 5px -3px rgb(0 0 0 / 0%) !important;
+}
+
+th:first-child, td:first-child {
+    padding-left: 30px;
+}
+
+td:last-child {
+    padding-right: 30px;
+}
+
+.table {
+    padding-top: 35px;
+}
+
+.row .col {
+    padding: 0;
+}
+
+.col .s3 {
+    padding-left: 0.75rem;
+}
+
+.search {
+    display: flex;
+}
+
+.divider {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    max-width: 100%;
+    width: 100%;
+    opacity: 0.5;
+}
+
+.sidenav {
+    width: 30vw;
+}
+
+.input-field.col label {
+    left: 0;
+}
+
+.contentside {
+    width: 80%;
+    margin: 40px auto 30px auto;
+}
+
+.paramsside {
+    margin-top: 1.5rem;
+}
+
+.params {
+    margin-top: 3.5rem;
+}
+
+.resultside__p {
+    padding: 15px;
+}
+
+.modal-content {
+    padding: 3rem !important;
+}
+
+.col .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.input-form {
+    margin-right: 2rem;
+}
+
+.add-form {
+    margin-top: 1rem;
+    grid-template-areas: "patientcard patientcard patientcard"
+                         "imt periods fsh"
+                         "mecho vright vleft"
+                         "header2 header2 header2"
+                         "gen1 gen2 gen3"
+                         "gen4 gen5 gen6"
+                         "button button button";
+    display: grid;
+    column-gap: 1rem;
+}
+
+.input-button {
+    justify-self: end;
+    margin-top: 1rem;
+}
+
+.modal {
+    top: 5% !important;
+    max-height: 100vh;
+}
+
+h5 {
+    margin-top: 1.2rem;
+    margin-bottom: 1.6rem;
+}
+
+.delete-button {
+    text-decoration: none;
+}
+
+.delete-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.card-row:hover {
+    cursor: pointer;
+    background-color: rgba(242,242,242,0.2);
+}
+
+table.striped>tbody>tr:nth-child(odd):hover {
+    background-color: rgba(242,242,242,1);
+}
+
+.delete-button-container {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.display-none {
+    display: none;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: #ff0000 !important;
+    }
+    100% {
+        background-color: none;
+    }
+}
+
+.highlight {
+    animation: highlight 2s;
+}
