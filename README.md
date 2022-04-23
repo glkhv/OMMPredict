@@ -1,2 +1,2 @@
-# OMMPredict
-Fast start: docker-compose up --build
+# Fast start OMMPredict:
+docker-compose up --build
