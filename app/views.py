@@ -40,7 +40,7 @@ def home():
     return render_template('show_all.html', patients=list(reversed(Patients.query.all())))
 
 
-@ app.route('/<int:id>', methods=['POST'])
+@app.route('/<int:id>', methods=['POST'])
 def research_open(id):
     research_object = {}
     patients = db.session.query(Patients).filter(
@@ -71,7 +71,7 @@ def research_open(id):
     return resp
 
 
-@ app.route('/delete/<int:id>', methods=['POST', 'GET'])
+@app.route('/delete/<int:id>', methods=['POST', 'GET'])
 def research_delete(id):
     patient = Patients.query.get(id)
 
@@ -81,7 +81,7 @@ def research_delete(id):
     return jsonify({"message": "true"})
 
 
-@ app.route('/update/<int:id>', methods=['POST', 'GET'])
+@app.route('/update/<int:id>', methods=['POST', 'GET'])
 def update(id):
     if request.method == 'POST':
         patients = db.session.query(Patients).filter(

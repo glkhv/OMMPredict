@@ -76,27 +76,57 @@ function fillData(data) {
                     <label for="vleft">V левого яичника, см3</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].kitlg80441}" id="kitlg80441" type="text" name="kitlg80441">
+                    <select name="kitlg80441" form="params" class="input-select" id="kitlg80441" type="text" name="kitlg80441">
+                        <option value="${data[0].kitlg80441}" selected>${data[0].kitlg80441}</option>
+                        <option value="CC">CC</option>
+                        <option value="CT">CT</option>
+                        <option value="TT">TT</option>
+                    </select>
                     <label for="kitlg80441">kitlg80441</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vegfa12143}" id="vegfa12143" type="text" name="vegfa12143">
+                    <select name="vegfa12143" form="params" class="input-select" id="vegfa12143" type="text" name="vegfa12143">
+                        <option value="${data[0].vegfa12143}" selected>${data[0].vegfa12143}</option>
+                        <option value="AA">AA</option>
+                        <option value="CA">CA</option>
+                        <option value="CC">CC</option>
+                    </select>
                     <label for="vegfa12143">vegfa12143</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vegfa2578}" id="vegfa2578" type="text" name="vegfa2578">
+                    <select name="vegfa2578" form="params" class="input-select" id="vegfa2578" type="text" name="vegfa2578">
+                        <option value="${data[0].vegfa2578}" selected>${data[0].vegfa2578}</option>
+                        <option value="AA">AA</option>
+                        <option value="CA">CA</option>
+                        <option value="CC">CC</option>
+                    </select>
                     <label for="vegfa2578">vegfa2578</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vegfa634}" id="vegfa634" type="text" name="vegfa634">
+                    <select name="vegfa634" form="params" class="input-select" id="vegfa634" type="text" name="vegfa634">
+                        <option value="${data[0].vegfa634}" selected>${data[0].vegfa634}</option>
+                        <option value="CC">CC</option>
+                        <option value="GC">GC</option>
+                        <option value="GG">GG</option>
+                    </select>
                     <label for="vegfa634">vegfa634</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vegfac936tcc}" id="vegfac936tcc" type="text" name="vegfac936tcc">
+                    <select name="vegfac936tcc" form="params" class="input-select" id="vegfac936tcc" type="text" name="vegfac936tcc">
+                        <option value="${data[0].vegfac936tcc}" selected>${data[0].vegfac936tcc}</option>
+                        <option value="CC">CC</option>
+                        <option value="CT">CT</option>
+                        <option value="TT">TT</option>
+                    </select>
                     <label for="vegfac936tcc">vegfac936tcc</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].tp53arg75pro}" id="tp53arg75pro" type="text" name="tp53arg75pro">
+                    <select name="tp53arg75pro" form="params" class="input-select" id="tp53arg75pro" type="text" name="tp53arg75pro">
+                        <option value="${data[0].tp53arg75pro}" selected>${data[0].tp53arg75pro}</option>
+                        <option value="CC">CC</option>
+                        <option value="CG">CG</option>
+                        <option value="GG">GG</option>
+                    </select>
                     <label for="tp53arg75pro">tp53arg75pro</label>
                 </div>
                 <input class="btn blue waves-effect waves-light" id="save-button" type="submit" data-id="${data[0].id}" style="margin-top: 1rem;" value="Сохранить изменения" disabled>
@@ -141,26 +171,26 @@ function fillData(data) {
                     <label for="vleft">V левого яичника, см3</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select class="input-select" id="kitlg80441" type="text" name="kitlg80441">
-                        <option value="${data[0].kitlg80441}" disabled selected>${data[0].kitlg80441}</option>
+                    <select name="kitlg80441" form="params" class="input-select" id="kitlg80441" type="text" name="kitlg80441">
+                        <option value="${data[0].kitlg80441}" selected>${data[0].kitlg80441}</option>
                         <option value="CC">CC</option>
                         <option value="CT">CT</option>
                         <option value="TT">TT</option>
                     </select>
                     <label for="kitlg80441">kitlg80441</label>
-				</div>
+                </div>
                 <div class="input-field col s3 paramsside">
-                    <select class="input-select" id="vegfa12143" type="text" name="vegfa12143">
-                        <option value="${data[0].vegfa12143}" disabled selected>${data[0].vegfa12143}</option>
+                    <select name="vegfa12143" form="params" class="input-select" id="vegfa12143" type="text" name="vegfa12143">
+                        <option value="${data[0].vegfa12143}" selected>${data[0].vegfa12143}</option>
                         <option value="AA">AA</option>
                         <option value="CA">CA</option>
                         <option value="CC">CC</option>
                     </select>
                     <label for="vegfa12143">vegfa12143</label>
-				</div>
+                </div>
                 <div class="input-field col s3 paramsside">
-                    <select class="input-select" id="vegfa2578" type="text" name="vegfa2578">
-                        <option value="${data[0].vegfa2578}" disabled selected>${data[0].vegfa2578}</option>
+                    <select name="vegfa2578" form="params" class="input-select" id="vegfa2578" type="text" name="vegfa2578">
+                        <option value="${data[0].vegfa2578}" selected>${data[0].vegfa2578}</option>
                         <option value="AA">AA</option>
                         <option value="CA">CA</option>
                         <option value="CC">CC</option>
@@ -168,8 +198,8 @@ function fillData(data) {
                     <label for="vegfa2578">vegfa2578</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select class="input-select" id="vegfa634" type="text" name="vegfa634">
-                        <option value="${data[0].vegfa634}" disabled selected>${data[0].vegfa634}</option>
+                    <select name="vegfa634" form="params" class="input-select" id="vegfa634" type="text" name="vegfa634">
+                        <option value="${data[0].vegfa634}" selected>${data[0].vegfa634}</option>
                         <option value="CC">CC</option>
                         <option value="GC">GC</option>
                         <option value="GG">GG</option>
@@ -177,8 +207,8 @@ function fillData(data) {
                     <label for="vegfa634">vegfa634</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select class="input-select" id="vegfac936tcc" type="text" name="vegfac936tcc">
-                        <option value="${data[0].vegfac936tcc}" disabled selected>${data[0].vegfac936tcc}</option>
+                    <select name="vegfac936tcc" form="params" class="input-select" id="vegfac936tcc" type="text" name="vegfac936tcc">
+                        <option value="${data[0].vegfac936tcc}" selected>${data[0].vegfac936tcc}</option>
                         <option value="CC">CC</option>
                         <option value="CT">CT</option>
                         <option value="TT">TT</option>
@@ -186,8 +216,8 @@ function fillData(data) {
                     <label for="vegfac936tcc">vegfac936tcc</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select class="input-select" id="tp53arg75pro" type="text" name="tp53arg75pro">
-                        <option value="${data[0].tp53arg75pro}" disabled selected>${data[0].tp53arg75pro}</option>
+                    <select name="tp53arg75pro" form="params" class="input-select" id="tp53arg75pro" type="text" name="tp53arg75pro">
+                        <option value="${data[0].tp53arg75pro}" selected>${data[0].tp53arg75pro}</option>
                         <option value="CC">CC</option>
                         <option value="CG">CG</option>
                         <option value="GG">GG</option>
