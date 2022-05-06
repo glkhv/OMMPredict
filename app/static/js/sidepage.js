@@ -47,7 +47,7 @@ function fillData(data) {
                 <p>${data[0].date_research}</p>
             </div>
             <div class="resultside col s3">
-                <p class="resultside__p" style="color: white; background-color: #66bb6a;">Низкий риск снижения овуляторного резерва</p>
+                <p class="resultside__p" style="color: white !important; background-color: #66bb6a;">Низкий риск снижения овуляторного резерва</p>
             </div>
             <div class="divider"></div>
             <form class="params" id="params" data-id="${data[0].id}">
@@ -142,7 +142,7 @@ function fillData(data) {
                 <p>${data[0].date_research}</p>
             </div>
             <div class="resultside col s3">
-                <p class="resultside__p" style="color: white; background-color: #ef5350;">Высокий риск снижения овуляторного резерва</p>
+                <p class="resultside__p" style="color: white !important; background-color: #ef5350;">Высокий риск снижения овуляторного резерва</p>
             </div>
             <div class="divider"></div>
             <form class="params" id="params" data-id="${data[0].id}">

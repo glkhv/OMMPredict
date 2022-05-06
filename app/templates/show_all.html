@@ -15,62 +15,58 @@
 			<nav class="white z-depth-3">
 				<div class="nav-wrapper">
 					<a href="#"><img src="../static/assets/logo.svg" alt="logo"></a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li>
 							<a class="black-text" href="#">
 								Выход из аккаунта
 								<img src="../static/assets/exit.svg" alt="exit" style="padding-left: 10px;">
 							</a>
-							
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 			</nav>
 		</header>
-		<div class="content">
-			<div class="row subheader">
-				<div class="col s12 left-align">
-					<h4>
-						<a class="black-text" href="{{ url_for('home') }}">Исследования</a>
-					</h4>
-				</div>
-			</div>
-			<div class="row search">
-				<div class="col s6">
-					<input type="text" id="search-input" onkeyup="SearchFunc()" placeholder="Поиск по номеру мед.карты">
-				</div>
-				<div class="col s12 right-align">
-					<button data-target="modal1" class="btn blue waves-effect waves-light modal-trigger">Добавить исследование</button>
-				</div>
-			</div>
-			<div class="divider"></div>
-				
+		<div class="content">		
 			<div class="row table">
-				<table class="striped" id="research-table">
-					<thead id="head-table">
-						<tr>
-							<th>Номер мед.карты</th>
-							<th>Дата исследования</th>
-							<th>Результат</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for patient in patients %}
-							<tr data-target="slide-out" data-id="{{ patient.id }}" class="card-row sidenav-trigger side-open">
-								<td>№{{ patient.patient_card }}</td>
-								<td>{{ patient.date_research }}</td>
-								<td>
-									{% if patient.target %}
-										Низкий риск снижения овуляторного резерва
-									{% else %}
-										Высокий риск снижения овуляторного резерва
-									{% endif %}
-								</td>
-								<td style="text-align: right;"><a data-target="slide-out" data-id="{{ patient.id }}" class="waves-effect btn-flat sidenav-trigger side-open">Открыть карточку</a></td>
+				<h4 class="header-title">
+					<a class="black-text" href="{{ url_for('home') }}">Все исследования</a>
+				</h4>
+				<div class="row search">
+					<div class="col s4 valign-wrapper left">
+						<input type="text" id="search-input" onkeyup="SearchFunc()" placeholder="Поиск по номеру мед.карты">
+					</div>
+					<div class="col s8 valign-wrapper button-add">
+						<button data-target="modal1" class="btn blue waves-effect waves-light modal-trigger">Добавить исследование</button>
+					</div>
+				</div>
+				<div class="divider"></div>
+				<div class="scroll-container">
+					<table class="striped" id="research-table">
+						<thead id="head-table">
+							<tr>
+								<th>Номер мед.карты</th>
+								<th>Дата исследования</th>
+								<th>Результат</th>
 							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{% for patient in patients %}
+								<tr data-target="slide-out" data-id="{{ patient.id }}" class="card-row sidenav-trigger side-open">
+									<td>№{{ patient.patient_card }}</td>
+									<td>{{ patient.date_research }}</td>
+									<td>
+										{% if patient.target %}
+											Низкий риск снижения овуляторного резерва
+										{% else %}
+											Высокий риск снижения овуляторного резерва
+										{% endif %}
+									</td>
+									<td style="text-align: right;"><a data-target="slide-out" data-id="{{ patient.id }}" class="waves-effect btn-flat sidenav-trigger side-open">Открыть карточку</a></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 
