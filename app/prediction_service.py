@@ -4,8 +4,8 @@ from sklearn.ensemble import RandomForestClassifier
 import pickle
 
 
-with open('./static/randomforest.pt', 'rb') as f:
-    model = pickle.load(f)
+# with open('./static/model.pt', 'rb') as f:
+#     model = pickle.load(f)
 
 
 def predict(imt, periods, fsh, kitlg80441, vegfa12143, vegfa2578, vegfa634, vegfac936tcc, tp53arg75pro, mecho, vright, vleft):
