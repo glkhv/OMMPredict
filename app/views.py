@@ -6,38 +6,57 @@ from flask import Flask, render_template, flash, redirect, request, url_for, jso
 from models import *
 from config import app
 from prediction_service import *
+from converting_service import *
+
+# Рецидив эндометриомы яичника - relapse (float)
+# Продолжительность менструации - periods (float)
+# М-эхо - mecho (float)
+# Время с момента появления первых симптомов (лет) - first_symptom (float)
+# Срочные оперативные роды (количество) - emergency_birth (float)
+# ФСГ до операции, мМе/мл - fsh (float)
+# V левого яичника - vleft (float)
+# V правого яичника - vright (float)
+# VEGF-A: -634 - vegfa634 (float)
+# TP53: Ex4+119 - tp53 (float)
+# VEFG-A: +936 - vegfa936 (float)
+# KITLG: 80441 - kitlg80441 (float)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        if not request.form['patient_card'] or not request.form['imt'] or not request.form['periods'] or not request.form['fsh'] or not request.form['kitlg80441'] or not request.form['vegfa12143'] or not request.form['vegfa2578'] or not request.form['vegfa634'] or not request.form['vegfac936tcc'] or not request.form['tp53arg75pro'] or not request.form['mecho'] or not request.form['vright'] or not request.form['vleft']:
+        if not request.form['patient_card'] or not request.form['relapse'] or not request.form['periods'] or not request.form['mecho'] or not request.form['first_symptom'] or not request.form['emergency_birth'] or not request.form['fsh'] or not request.form['vleft'] or not request.form['vright'] or not request.form['vegfa634'] or not request.form['tp53'] or not request.form['vegfa936'] or not request.form['kitlg80441']:
             flash('Please enter all the fields', 'error')
         else:
             patient_card = request.form['patient_card']
             date_research = date.today().strftime('%d.%m.%Y')
-            imt = request.form['imt']
+            relapse = request.form['relapse']
             periods = request.form['periods']
-            fsh = request.form['fsh']
-            kitlg80441 = request.form['kitlg80441']
-            vegfa12143 = request.form['vegfa12143']
-            vegfa2578 = request.form['vegfa2578']
-            vegfa634 = request.form['vegfa634']
-            vegfac936tcc = request.form['vegfac936tcc']
-            tp53arg75pro = request.form['tp53arg75pro']
             mecho = request.form['mecho']
-            vright = request.form['vright']
+            first_symptom = request.form['first_symptom']
+            emergency_birth = request.form['emergency_birth']
+            fsh = request.form['fsh']
             vleft = request.form['vleft']
-            # target = predict(imt, periods, fsh, kitlg80441, vegfa12143, vegfa2578,
-            #                  vegfa634, vegfac936tcc, tp53arg75pro, mecho, vright, vleft)
+            vright = request.form['vright']
+            vegfa634 = request.form['vegfa634']
+            tp53 = request.form['tp53']
+            vegfa936 = request.form['vegfa936']
+            kitlg80441 = request.form['kitlg80441']
+
+            vegfa634gg, vegfa634c, tp53gg, vegfa936cc, kitlg80441cc = convert(
+                vegfa634, tp53, vegfa936, kitlg80441)
+
             target = False
-            patient = Patients(patient_card, date_research, imt, periods, fsh, kitlg80441,
-                               vegfa12143, vegfa2578, vegfa634, vegfac936tcc, tp53arg75pro, mecho, vright, vleft, target)
+            # target = predict(relapse, vegfa634gg, vegfa634c, periods, tp53gg, mecho,
+            #                  vegfa936cc, first_symptom, kitlg80441cc, emergency_birth, vleft, fsh, vright)
+
+            patient = Patients(patient_card, date_research, relapse, vegfa634, vegfa634gg, vegfa634c, periods, tp53, tp53gg,
+                               mecho, vegfa936, vegfa936cc, first_symptom, kitlg80441, kitlg80441cc, emergency_birth, vleft, fsh, vright, target)
             db.session.add(patient)
             db.session.commit()
             flash('Record was succesfully added')
             return redirect(url_for('home'))
-    return render_template('show_all.html', patients=list(reversed(Patients.query.all())))
+    return render_template('index.html', patients=list(reversed(Patients.query.all())))
 
 
 @app.route('/<int:id>', methods=['POST'])
@@ -50,18 +69,18 @@ def research_open(id):
         'id': patients.id,
         'patient_card': patients.patient_card,
         'date_research': patients.date_research,
-        'imt': patients.imt,
+        'relapse': patients.relapse,
         'periods': patients.periods,
-        'fsh': patients.fsh,
-        'kitlg80441': patients.kitlg80441,
-        'vegfa12143': patients.vegfa12143,
-        'vegfa2578': patients.vegfa2578,
-        'vegfa634': patients.vegfa634,
-        'vegfac936tcc': patients.vegfac936tcc,
-        'tp53arg75pro': patients.tp53arg75pro,
         'mecho': patients.mecho,
-        'vright': patients.vright,
+        'first_symptom': patients.first_symptom,
+        'emergency_birth': patients.emergency_birth,
+        'fsh': patients.fsh,
         'vleft': patients.vleft,
+        'vright': patients.vright,
+        'vegfa634': patients.vegfa634,
+        'tp53': patients.tp53,
+        'vegfa936': patients.vegfa936,
+        'kitlg80441': patients.kitlg80441,
         'target': patients.target
     }
 
@@ -88,21 +107,25 @@ def update(id):
             Patients.id == id).first()
 
         patients.date_research = date.today().strftime('%d.%m.%Y')
-        patients.imt = request.form['imt']
+        patients.relapse = request.form['relapse']
         patients.periods = request.form['periods']
-        patients.fsh = request.form['fsh']
-        patients.kitlg80441 = request.form['kitlg80441']
-        patients.vegfa12143 = request.form['vegfa12143']
-        patients.vegfa2578 = request.form['vegfa2578']
-        patients.vegfa634 = request.form['vegfa634']
-        patients.vegfac936tcc = request.form['vegfac936tcc']
-        patients.tp53arg75pro = request.form['tp53arg75pro']
         patients.mecho = request.form['mecho']
-        patients.vright = request.form['vright']
+        patients.first_symptom = request.form['first_symptom']
+        patients.emergency_birth = request.form['emergency_birth']
+        patients.fsh = request.form['fsh']
         patients.vleft = request.form['vleft']
+        patients.vright = request.form['vright']
+        patients.vegfa634 = request.form['vegfa634']
+        patients.tp53 = request.form['tp53']
+        patients.vegfa936 = request.form['vegfa936']
+        patients.kitlg80441 = request.form['kitlg80441']
+
+        patients.vegfa634gg, patients.vegfa634c, patients.tp53gg, patients.vegfa936cc, patients.kitlg80441cc = convert(
+            patients.vegfa634, patients.tp53, patients.vegfa936, patients.kitlg80441)
+
         patients.target = False
-        # target = predict(imt, periods, fsh, kitlg80441, vegfa12143, vegfa2578,
-        #                  vegfa634, vegfac936tcc, tp53arg75pro, mecho, vright, vleft)
+        # patients.target = predict(patients.relapse, patients.vegfa634gg, patients.vegfa634c, patients.periods, patients.tp53gg, patients.mecho,
+        #                           patients.vegfa936cc, patients.first_symptom, patients.kitlg80441cc, patients.emergency_birth, patients.vleft, patients.fsh, patients.vright)
 
         db.session.commit()
         flash('Record was succesfully updated')
