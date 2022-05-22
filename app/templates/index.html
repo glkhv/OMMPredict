@@ -15,18 +15,10 @@
 			<nav class="white z-depth-3">
 				<div class="nav-wrapper">
 					<a href="#"><img src="../static/assets/logo.svg" alt="logo"></a>
-					<!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li>
-							<a class="black-text" href="#">
-								Выход из аккаунта
-								<img src="../static/assets/exit.svg" alt="exit" style="padding-left: 10px;">
-							</a>
-						</li>
-					</ul> -->
 				</div>
 			</nav>
 		</header>
-		<div class="content">		
+		<div id="content" class="content" style="font-size:16px;">		
 			<div class="row table">
 				<h4 class="header-title">
 					<a class="black-text" href="{{ url_for('home') }}">Все исследования</a>
@@ -55,7 +47,7 @@
 									<td>№{{ patient.patient_card }}</td>
 									<td>{{ patient.date_research }}</td>
 									<td>
-										{% if patient.target %}
+										{% if patient.target == False %}
 											Низкий риск снижения овуляторного резерва
 										{% else %}
 											Высокий риск снижения овуляторного резерва
@@ -81,46 +73,49 @@
 			<div class="row modal-content">
 				<h4>Добавить исследование</h4>
 				<form class="col s12 add-form" id="add-form" action={{ request.path }} method="post">
-					<input type="hidden" name="action" value="add">
 					<div class="input-field" style="grid-area: patientcard;">
-						<input placeholder="Номер мед.карты" id="patient_card" type="text" name="patient_card">
+						<input placeholder="Номер мед.карты" id="patient_card" type="text" name="patient_card" required>
 						<label for="patient_card">Номер мед.карты</label>
 					</div>
 					<div class="input-field" style="grid-area: field1;">
-						<input placeholder="Рецидив эндометриомы яичника" id="relapse" type="text" name="relapse">
+						<select id="relapse" type="text" name="relapse" required>
+							<option value="" disabled selected>Выберите из списка</option>
+							<option value="1">1</option>
+							<option value="0">0</option>
+						</select>
 						<label for="relapse">Рецидив эндометриомы яичника</label>
 					</div>
 					<div class="input-field" style="grid-area: field2;">
-						<input placeholder="Менструация, дней" id="periods" type="text" name="periods">
+						<input placeholder="Менструация, дней" id="periods" type="text" name="periods" required>
 						<label for="periods">Менструация, дней</label>
 					</div>
 					<div class="input-field" style="grid-area: field3;">
-						<input placeholder="М-эхо, мм" id="mecho" type="text" name="mecho">
-						<label for="mecho">М-эхо, мм</label>
+						<input placeholder="Срочные оперативные роды (кол-во)" id="emergency_birth" type="text" name="emergency_birth" required>
+						<label for="emergency_birth">Срочные оперативные роды (кол-во)</label>
 					</div>
 					<div class="input-field" style="grid-area: field4;">
-						<input placeholder="Время с момента появления первых симптомов (лет)" id="first_symptom" type="text" name="first_symptom">
+						<input placeholder="Появление первых симптомов (лет)" id="first_symptom" type="text" name="first_symptom" required>
 						<label for="first_symptom">Появление первых симптомов (лет)</label>
 					</div>
 					<div class="input-field" style="grid-area: field5;">
-						<input placeholder="Срочные оперативные роды (количество)" id="emergency_birth" type="text" name="emergency_birth">
-						<label for="emergency_birth">Срочные оперативные роды (кол-во)</label>
-					</div>
-					<div class="input-field" style="grid-area: field6;">
-						<input placeholder="ФСГ до операции, мМе/мл" id="fsh" type="text" name="fsh">
+						<input placeholder="ФСГ до операции, мМе/мл" id="fsh" type="text" name="fsh" required>
 						<label for="imt">ФСГ до операции, мМе/мл</label>
 					</div>
+					<div class="input-field" style="grid-area: field6;">
+						<input placeholder="М-эхо, мм" id="mecho" type="text" name="mecho" required>
+						<label for="mecho">М-эхо, мм</label>
+					</div>
 					<div class="input-field" style="grid-area: field7;">
-						<input placeholder="V левого яичника, см3" id="vleft" type="text" name="vleft">
+						<input placeholder="V левого яичника, см3" id="vleft" type="text" name="vleft" required>
 						<label for="vleft">V левого яичника, см3</label>
 					</div>
 					<div class="input-field" style="grid-area: field8;">
-						<input placeholder="V правого яичника, см3" id="vright" type="text" name="vright">
+						<input placeholder="V правого яичника, см3" id="vright" type="text" name="vright" required>
 						<label for="vright">V правого яичника, см3</label>
 					</div>
 					<h5 style="grid-area: header2;">Генотипы</h5>
 					<div class="input-field" style="grid-area: gen1;">
-						<select id="vegfa634" type="text" name="vegfa634">
+						<select id="vegfa634" type="text" name="vegfa634" required>
 							<option value="" disabled selected>Выберите из списка</option>
 							<option value="CC">CC</option>
 							<option value="GC">GC</option>
@@ -129,16 +124,16 @@
 						<label for="vegfa634">VEGF-A: -634</label>
 					</div>
 					<div class="input-field" style="grid-area: gen2;">
-						<select id="tp53" type="text" name="tp53">
+						<select id="tp53" type="text" name="tp53" required>
 							<option value="" disabled selected>Выберите из списка</option>
 							<option value="CC">CC</option>
-							<option value="CG">CG</option>
+							<option value="CG">GC</option>
 							<option value="GG">GG</option>
 						</select>
 						<label for="tp53">TP53: Ex4+119</label>
 					</div>
 					<div class="input-field" style="grid-area: gen3;">
-						<select id="vegfa936" type="text" name="vegfa936">
+						<select id="vegfa936" type="text" name="vegfa936" required>
 							<option value="" disabled selected>Выберите из списка</option>
 							<option value="CC">CC</option>
 							<option value="CT">CT</option>
@@ -147,7 +142,7 @@
 						<label for="vegfa936">VEFG-A: +936</label>
 					</div>
 					<div class="input-field" style="grid-area: gen4;">
-						<select id="kitlg80441" type="text" name="kitlg80441">
+						<select id="kitlg80441" type="text" name="kitlg80441" required>
 							<option value="" disabled selected>Выберите из списка</option>
 							<option value="CC">CC</option>
 							<option value="CT">CT</option>
