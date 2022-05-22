@@ -40,7 +40,7 @@ function buttonEnable() {
 function fillData(data) {
     let descr = ``;
 
-    if (data[0].target) {
+    if (data[0].target == false) {
         descr = `
             <div class="titleside col s3">
                 <h5>№${data[0].patient_card}</h5>
@@ -52,39 +52,47 @@ function fillData(data) {
             <div class="divider"></div>
             <form class="params" id="params" data-id="${data[0].id}">
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].relapse}" id="relapse" type="text" name="relapse">
+                    <select class="input-text" value="${data[0].relapse}" id="relapse" type="text" name="relapse" required>
+                    <option value="${data[0].relapse}" disabled selected>${data[0].relapse}</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                    </select>
                     <label for="relapse">Рецидив эндометриомы яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].periods}" id="periods" type="text" name="periods">
-                    <label for="periods">Продолжительность менструации, дней</label>
+                    <input class="input-text" value="${data[0].relapse}" id="relapse" type="text" name="relapse" required>
+                    <label for="relapse">Рецидив эндометриомы яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="text" name="mecho">
-                    <label for="mecho">М-Эхо</label>
+                    <input class="input-text" value="${data[0].periods}" id="periods" type="text" name="periods" required>
+                    <label for="periods">Менструация, дней</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="text" name="first_symptom">
-                    <label for="first_symptom">Лет с момента появления первых симптомов</label>
+                    <input class="input-text" value="${data[0].emergency_birth}" id="emergency_birth" type="text" name="emergency_birth" required>
+                    <label for="emergency_birth">Срочные оперативные роды (кол-во)</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].emergency_birth}" id="emergency_birth" type="text" name="emergency_birth">
-                    <label for="emergency_birth">Срочные оперативные роды (количество)</label>
+                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="text" name="first_symptom" required>
+                    <label for="first_symptom">Появление первых симптомов (лет)</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].fsh}" id="fsh" type="text" name="fsh">
+                    <input class="input-text" value="${data[0].fsh}" id="fsh" type="text" name="fsh" required>
                     <label for="fsh">ФСГ до операции, мМе/мл</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vleft}" id="vleft" type="text" name="vleft">
+                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="text" name="mecho" required>
+                    <label for="mecho">М-Эхо</label>
+                </div>
+                <div class="input-field col s3 paramsside">
+                    <input class="input-text" value="${data[0].vleft}" id="vleft" type="text" name="vleft" required>
                     <label for="vleft">V левого яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vright}" id="vright" type="text" name="vright">
+                    <input class="input-text" value="${data[0].vright}" id="vright" type="text" name="vright" required>
                     <label for="vright">V правого яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select name="vegfa634" form="params" class="input-select" id="vegfa634" type="text" name="vegfa634">
+                    <select name="vegfa634" form="params" class="input-select" id="vegfa634" type="text" name="vegfa634" required>
                         <option value="${data[0].vegfa634}" selected>${data[0].vegfa634}</option>
                         <option value="CC">CC</option>
                         <option value="GC">GC</option>
@@ -93,7 +101,7 @@ function fillData(data) {
                     <label for="vegfa634">VEGF-A: -634</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select name="tp53" form="params" class="input-select" id="tp53" type="text" name="tp53">
+                    <select name="tp53" form="params" class="input-select" id="tp53" type="text" name="tp53" required>
                         <option value="${data[0].tp53}" selected>${data[0].tp53}</option>
                         <option value="CC">CC</option>
                         <option value="CG">CG</option>
@@ -102,7 +110,7 @@ function fillData(data) {
                     <label for="tp53">TP53: Ex4+119</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select name="vegfa936" form="params" class="input-select" id="vegfa936" type="text" name="vegfa936">
+                    <select name="vegfa936" form="params" class="input-select" id="vegfa936" type="text" name="vegfa936" required>
                         <option value="${data[0].vegfa936}" selected>${data[0].vegfa936}</option>
                         <option value="CC">CC</option>
                         <option value="CT">CT</option>
@@ -111,7 +119,7 @@ function fillData(data) {
                     <label for="vegfa936">VEFG-A: +936</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <select name="kitlg80441" form="params" class="input-select" id="kitlg80441" type="text" name="kitlg80441">
+                    <select name="kitlg80441" form="params" class="input-select" id="kitlg80441" type="text" name="kitlg80441" required>
                         <option value="${data[0].kitlg80441}" selected>${data[0].kitlg80441}</option>
                         <option value="CC">CC</option>
                         <option value="CT">CT</option>
@@ -142,23 +150,23 @@ function fillData(data) {
                 </div>
                 <div class="input-field col s3 paramsside">
                     <input class="input-text" value="${data[0].periods}" id="periods" type="text" name="periods">
-                    <label for="periods">Продолжительность менструации, дней</label>
-                </div>
-                <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="text" name="mecho">
-                    <label for="mecho">М-Эхо</label>
-                </div>
-                <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="text" name="first_symptom">
-                    <label for="first_symptom">Время с момента появления первых симптомов (лет)</label>
+                    <label for="periods">Менструация, дней</label>
                 </div>
                 <div class="input-field col s3 paramsside">
                     <input class="input-text" value="${data[0].emergency_birth}" id="emergency_birth" type="text" name="emergency_birth">
-                    <label for="emergency_birth">V правого яичника, см3</label>
+                    <label for="emergency_birth">Срочные оперативные роды (кол-во)</label>
+                </div>
+                <div class="input-field col s3 paramsside">
+                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="text" name="first_symptom">
+                    <label for="first_symptom">Появление первых симптомов (лет)</label>
                 </div>
                 <div class="input-field col s3 paramsside">
                     <input class="input-text" value="${data[0].fsh}" id="fsh" type="text" name="fsh">
                     <label for="fsh">ФСГ до операции, мМе/мл</label>
+                </div>
+                <div class="input-field col s3 paramsside">
+                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="text" name="mecho">
+                    <label for="mecho">М-Эхо</label>
                 </div>
                 <div class="input-field col s3 paramsside">
                     <input class="input-text" value="${data[0].vleft}" id="vleft" type="text" name="vleft">
@@ -181,7 +189,7 @@ function fillData(data) {
                     <select name="tp53" form="params" class="input-select" id="tp53" type="text" name="tp53">
                         <option value="${data[0].tp53}" selected>${data[0].tp53}</option>
                         <option value="CC">CC</option>
-                        <option value="CG">CG</option>
+                        <option value="GC">GC</option>
                         <option value="GG">GG</option>
                     </select>
                     <label for="tp53">TP53: Ex4+119</label>

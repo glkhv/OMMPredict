@@ -8,19 +8,6 @@ from config import app
 from prediction_service import *
 from converting_service import *
 
-# Рецидив эндометриомы яичника - relapse (float)
-# Продолжительность менструации - periods (float)
-# М-эхо - mecho (float)
-# Время с момента появления первых симптомов (лет) - first_symptom (float)
-# Срочные оперативные роды (количество) - emergency_birth (float)
-# ФСГ до операции, мМе/мл - fsh (float)
-# V левого яичника - vleft (float)
-# V правого яичника - vright (float)
-# VEGF-A: -634 - vegfa634 (float)
-# TP53: Ex4+119 - tp53 (float)
-# VEFG-A: +936 - vegfa936 (float)
-# KITLG: 80441 - kitlg80441 (float)
-
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -43,12 +30,17 @@ def home():
             vegfa936 = request.form['vegfa936']
             kitlg80441 = request.form['kitlg80441']
 
+            vegfa634gg = 0.0
+            vegfa634c = 0.0
+            tp53gg = 0.0
+            vegfa936cc = 0.0
+            kitlg80441cc = 0.0
+
             vegfa634gg, vegfa634c, tp53gg, vegfa936cc, kitlg80441cc = convert(
                 vegfa634, tp53, vegfa936, kitlg80441)
 
-            target = False
-            # target = predict(relapse, vegfa634gg, vegfa634c, periods, tp53gg, mecho,
-            #                  vegfa936cc, first_symptom, kitlg80441cc, emergency_birth, vleft, fsh, vright)
+            target = predict(relapse, vegfa634gg, vegfa634c, periods, tp53gg, mecho,
+                             vegfa936cc, first_symptom, kitlg80441cc, emergency_birth, vleft, fsh, vright)
 
             patient = Patients(patient_card, date_research, relapse, vegfa634, vegfa634gg, vegfa634c, periods, tp53, tp53gg,
                                mecho, vegfa936, vegfa936cc, first_symptom, kitlg80441, kitlg80441cc, emergency_birth, vleft, fsh, vright, target)
@@ -123,9 +115,8 @@ def update(id):
         patients.vegfa634gg, patients.vegfa634c, patients.tp53gg, patients.vegfa936cc, patients.kitlg80441cc = convert(
             patients.vegfa634, patients.tp53, patients.vegfa936, patients.kitlg80441)
 
-        patients.target = False
-        # patients.target = predict(patients.relapse, patients.vegfa634gg, patients.vegfa634c, patients.periods, patients.tp53gg, patients.mecho,
-        #                           patients.vegfa936cc, patients.first_symptom, patients.kitlg80441cc, patients.emergency_birth, patients.vleft, patients.fsh, patients.vright)
+        patients.target = predict(patients.relapse, patients.vegfa634gg, patients.vegfa634c, patients.periods, patients.tp53gg, patients.mecho,
+                                  patients.vegfa936cc, patients.first_symptom, patients.kitlg80441cc, patients.emergency_birth, patients.vleft, patients.fsh, patients.vright)
 
         db.session.commit()
         flash('Record was succesfully updated')
