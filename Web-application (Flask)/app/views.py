@@ -5,7 +5,7 @@ from email.mime import application
 from flask import Flask, render_template, flash, redirect, request, url_for, jsonify
 from models import *
 from config import app
-from prediction_service import *
+from predict_service import *
 from converting_service import *
 
 
