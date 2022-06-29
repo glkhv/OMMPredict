@@ -60,31 +60,31 @@ function fillData(data) {
                     <label for="relapse">Рецидив эндометриомы яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].periods}" id="periods" type="number" name="periods" required>
+                    <input class="input-text" value="${data[0].periods}" id="periods" type="number" step="any" name="periods" required>
                     <label for="periods">Менструация, дней</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].emergency_birth}" id="emergency_birth" type="number" name="emergency_birth" required>
+                    <input class="input-text" value="${data[0].emergency_birth}" id="emergency_birth" type="number" step="any" name="emergency_birth" required>
                     <label for="emergency_birth">Срочные оперативные роды (кол-во)</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="number" name="first_symptom" required>
+                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="number" step="any" name="first_symptom" required>
                     <label for="first_symptom">Появление первых симптомов (лет)</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].fsh}" id="fsh" type="number" name="fsh" required>
+                    <input class="input-text" value="${data[0].fsh}" id="fsh" type="number" step="any" name="fsh" required>
                     <label for="fsh">ФСГ до операции, мМе/мл</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="number" name="mecho" required>
+                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="number" step="any" name="mecho" required>
                     <label for="mecho">М-Эхо</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vleft}" id="vleft" type="number" name="vleft" required>
+                    <input class="input-text" value="${data[0].vleft}" id="vleft" type="number" step="any" name="vleft" required>
                     <label for="vleft">V левого яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vright}" id="vright" type="number" name="vright" required>
+                    <input class="input-text" value="${data[0].vright}" id="vright" type="number" step="any" name="vright" required>
                     <label for="vright">V правого яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
@@ -149,31 +149,31 @@ function fillData(data) {
                     <label for="relapse">Рецидив эндометриомы яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].periods}" id="periods" type="number" name="periods" required>
+                    <input class="input-text" value="${data[0].periods}" id="periods" type="number" step="any" name="periods" required>
                     <label for="periods">Менструация, дней</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].emergency_birth}" id="emergency_birth" type="number" name="emergency_birth" required>
+                    <input class="input-text" value="${data[0].emergency_birth}" id="emergency_birth" type="number" step="any" name="emergency_birth" required>
                     <label for="emergency_birth">Срочные оперативные роды (кол-во)</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="number" name="first_symptom" required>
+                    <input class="input-text" value="${data[0].first_symptom}" id="first_symptom" type="number" step="any" name="first_symptom" required>
                     <label for="first_symptom">Появление первых симптомов (лет)</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].fsh}" id="fsh" type="number" name="fsh" required>
+                    <input class="input-text" value="${data[0].fsh}" id="fsh" type="number" step="any" name="fsh" required>
                     <label for="fsh">ФСГ до операции, мМе/мл</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="number" name="mecho" required>
+                    <input class="input-text" value="${data[0].mecho}" id="mecho" type="number" step="any" name="mecho" required>
                     <label for="mecho">М-Эхо</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vleft}" id="vleft" type="number" name="vleft" required>
+                    <input class="input-text" value="${data[0].vleft}" id="vleft" type="number" step="any" name="vleft" required>
                     <label for="vleft">V левого яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">
-                    <input class="input-text" value="${data[0].vright}" id="vright" type="number" name="vright" required>
+                    <input class="input-text" value="${data[0].vright}" id="vright" type="number" step="any" name="vright" required>
                     <label for="vright">V правого яичника</label>
                 </div>
                 <div class="input-field col s3 paramsside">

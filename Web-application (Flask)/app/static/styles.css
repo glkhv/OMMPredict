@@ -287,3 +287,15 @@ h1, h2, h3, h4, h5, h6, p, td, th {
   .input-field>label:not(.label-icon).active {
       width: 300px;
   }
+
+  .title-head {
+    display: flex;
+    text-align: center;
+  }
+
+  .reload-link {
+    align-self: center;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+  }
