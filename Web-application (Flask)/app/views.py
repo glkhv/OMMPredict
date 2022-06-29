@@ -1,7 +1,5 @@
 from crypt import methods
 from datetime import date
-from email.mime import application
-from unittest import skip
 
 from flask import Flask, render_template, flash, redirect, request, url_for, jsonify
 from models import *

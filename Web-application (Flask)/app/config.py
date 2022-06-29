@@ -4,10 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 DBUSER = 'admin'
-DBPASS = 'pass'
+DBPASS = 'niiomm_password'
 DBHOST = 'db'
 DBPORT = '5432'
-DBNAME = 'testdb'
+DBNAME = 'niiomm_db'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = \
     'postgresql+psycopg2://{user}:{passwd}@{host}:{port}/{db}'.format(

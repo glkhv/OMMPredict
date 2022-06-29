@@ -11,9 +11,9 @@ services:
   db:
     image: postgres:10
     environment:
-      POSTGRES_DB: "testdb"
+      POSTGRES_DB: "niiomm_db"
       POSTGRES_USER: "admin"
-      POSTGRES_PASSWORD: "pass"
+      POSTGRES_PASSWORD: "niiomm_password"
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes: 
       - .:/var/lib/postgresql/data
